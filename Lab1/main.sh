@@ -10,8 +10,8 @@ reverse)
  strlen) source ./strlen.sh
 	strlen1 $2 $3;;
  help) source ./help.sh;;
- exit) source ./exit.sh
-	exit1 $2;;
+ exit2) source ./exit2.sh
+	exit1 $2 $3;;
 *) echo "Введите одну из этих комманд"
 	source ./help.sh	
 esac
