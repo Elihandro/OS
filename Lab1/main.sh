@@ -14,6 +14,10 @@ case $1 in
  strlen)
 	source ./strlen.sh
 	strlen1 $2 $3 $4;;
+
+    log)
+	source ./log.sh
+	log1 $2 $3 $4;;
  
  help)
 	source ./help.sh;;

@@ -1,6 +1,18 @@
 #!/bin/bash
 
 
+if [[ $# -gt 0 ]]
+
+then
+	 
+	echo -e "\e[1;31mЗдесь не нужны аргументы\e[0m ">&2
+	exit -3
+
+fi 
+
+
+
+
 echo -e "\e[1;31m Выберите одну из команд нажатием на соответствующую цифру \e[0m"
 echo -e "\e[1;32m  1 > Calc \e[0m"
 echo -e "\e[1;32m  2 > Search \e[0m"
@@ -11,6 +23,14 @@ echo -e "\e[1;32m  6 > Exit  \e[0m"
 echo -e "\e[1;32m  7 > Help  \e[0m"
 
 read option
+if [[ $option -gt 7 ]]
+then 	
+	
+	echo -e "\e[1;31mВведите число от 1 до 7\e[0m ">&2
+	exit -2
+
+fi
+
 case $option in 
 
 1) source ./calc.sh

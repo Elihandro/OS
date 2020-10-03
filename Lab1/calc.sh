@@ -8,15 +8,12 @@ then
  
 fi
 
-echo $#
 
  case $1 in
 
 	sum)  echo $(($2 + $3));;
 	mul)  echo $(($2 * $3));;
-	div)  if [[ $3 -eq 0 ]]
-		echo 
-		echo
+	div)  if [[ $3 -eq 0 || $3 -eq -0 || $3 -eq +0 ]]
 		then echo -e "\e[1;31mДелить на ноль нельзя\e[0m" >&2
 		echo
 		echo
