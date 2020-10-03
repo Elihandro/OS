@@ -9,7 +9,7 @@ fi
 
 
 
-if  [[ -z $1 ]]
+if  [[ -z $1 ]] #-z - строка пуста
 
 then
 	echo "Done 0"

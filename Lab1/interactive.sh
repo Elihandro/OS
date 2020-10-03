@@ -62,7 +62,8 @@ case $option in
 	read Text
 	strlen1 $Text;;
 
-5) source ./log.sh;;
+5) source ./log.sh
+	log1 $1 $2;;
 6) source ./exit.sh
 	echo -e "\e[1;31mВведите код ошибки\e[0m"
 	read code

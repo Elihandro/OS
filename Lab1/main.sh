@@ -1,7 +1,7 @@
 #!/bin/bash
 case $1 in
 
- calc)
+   calc)
 	source ./calc.sh
 	calc1 $2 $3 $4 $5 $6;;
  search)
@@ -19,14 +19,15 @@ case $1 in
 	source ./log.sh
 	log1 $2 $3 $4;;
  
- help)
+   help)
 	source ./help.sh;;
 
- exit)
+   exit)
 	source ./exit.sh
 	exit1 $2 $3 $4;;
 
-*) echo "Введите одну из этих комманд"
+      *)
+	echo "Введите одну из этих комманд"
 	source ./help.sh	
 esac
 
