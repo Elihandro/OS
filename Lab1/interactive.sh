@@ -23,7 +23,12 @@ case $option in
 	echo -e "\e[1;31mОтвет равен\e[0m"
 	calc1 $commanda $number1 $number2;;
 			
-2) source ./search.sh;;
+2) source ./search.sh
+	echo -e "\e[1;31mВведите директорию\e[0m"
+	read direct
+	echo -e "\e[1;31mВведите текст\e[0m" 
+	read text2
+	search1 $direct $text2;;
 
 3) source ./reverse.sh	
 	echo -e "\e[1;31mВведите первый файл\e[0m"
@@ -35,9 +40,13 @@ case $option in
 4) source ./strlen.sh		
 	echo -e "\e[1;31mВведите текст\e[0m"
 	read Text
-	strlen1 $Text
-;;
+	strlen1 $Text;;
+
 5) source ./log.sh;;
-6) source ./exit.sh;;
+6) source ./exit.sh
+	echo -e "\e[1;31mВведите код ошибки\e[0m"
+	read code
+	exit $code;;
+	
 7) source ./help.sh;;
 esac
