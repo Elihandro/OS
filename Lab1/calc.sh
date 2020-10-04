@@ -6,7 +6,7 @@ calc1(){
 numbers='^[+-]?[0-9]+$'
 if  ! [[ $2 =~ $numbers && $3 =~ $numbers ]] 
 then
-	echo -e "\e[1;31mВведите числа\e[0m"
+	echo -e "\e[1;31mВведите числа\e[0m" >&2
 	exit -2
 fi
 

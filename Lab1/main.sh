@@ -2,7 +2,7 @@
 case $1 in
 
    calc)
-	if ! [ -f "calc.sh"]
+	if ! [ -f "calc.sh" ]
 	then	
 		echo -e "\e[1;31mКалькулятора нет\e[0m" >&2
 		exit -4
@@ -11,7 +11,7 @@ case $1 in
 	source ./calc.sh
 	calc1 $2 $3 $4 $5 $6;;
  search)
-	if ! [ -f "search.sh"]
+	if ! [ -f "search.sh" ]
 	then	
 		echo -e "\e[1;31mСерча нет\e[0m" >&2
 		exit -4	
@@ -19,7 +19,7 @@ case $1 in
 	source ./search.sh
 	search1 $2 $3 $4;;
  reverse)
-	if ! [ -f "reverse.sh"]
+	if ! [ -f "reverse.sh" ]
 	then	
 		echo -e "\e[1;31mРеверса нет\e[0m" >&2
 		exit -4
@@ -28,7 +28,7 @@ case $1 in
 	reverse1 $2 $3 $4;;
 
  strlen)
-	if ! [ -f "strlen.sh"]
+	if ! [ -f "strlen.sh" ] 
 	then	
 		echo -e "\e[1;31mСтрлена нет\e[0m" >&2
 		exit -4
@@ -37,7 +37,7 @@ case $1 in
 	strlen1 $2 $3 $4;;
 
     log)
-	if ! [ -f "log.sh"]
+	if ! [ -f "log.sh" ] 
 	then 	
 		echo -e "\e[1;31mЛога нет\e[0m" >&2
 		exit -4
@@ -46,7 +46,7 @@ case $1 in
 	log1 $2 $3 $4;;
  
    help)
-	if ! [ -f "help.sh"]
+	if ! [ -f "help.sh" ]
 	then
 		echo -e "\e[1;31mПомощь отсутствует. Давай сам.\e[0m" >&2
 		exit -4

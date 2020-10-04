@@ -20,7 +20,7 @@ then
 	echo "Done $1"
 	exit "$1"
 else 	
-	echo "Диапазог от 0 до 255"
+	echo "Диапазон от 0 до 255"
 
 fi
 }
