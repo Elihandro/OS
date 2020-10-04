@@ -1,11 +1,12 @@
 #!/bin/bash
-calc1(){
 
+
+calc1(){
 
 numbers='^[+-]?[0-9]+$'
 if  ! [[ $2 =~ $numbers && $3 =~ $numbers ]] 
 then
-	echo -e "\e[1;31mВведите числа\e[0m" >&2
+	echo -e "\e[1;31mВведите числа\e[0m"
 	exit -2
 fi
 
@@ -33,8 +34,12 @@ fi
 	  *)    echo
 		echo
 		echo -e "\e[1;31mCommand not found, please add command\e[0m" >&2
-		echo
-		echo
-		exit -2;;
+		exit -2
+
 esac
 }
+
+
+
+
+
