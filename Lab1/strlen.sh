@@ -2,6 +2,14 @@
 
 
 strlen1(){
+if [ $# -eq 0 ] 
+then
+	
+	echo -e "\e[1;31mВведите строку\e[0m ">&2
+	exit -2
+fi
+
+
 if [[ $# -gt 1 ]]
 then
 	echo -e "\e[1;31m Введите 1 слово\e[0m" >&2

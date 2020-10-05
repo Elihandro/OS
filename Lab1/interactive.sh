@@ -1,10 +1,9 @@
 #!/bin/bash
 
 
-if [[ $# -gt 0 ]]
-
+if [ $# -gt 1 ]
 then
-	 
+	echo $# 
 	echo -e "\e[1;31mЗдесь не нужны аргументы\e[0m ">&2
 	exit -3
 

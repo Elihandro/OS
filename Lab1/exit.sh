@@ -1,6 +1,15 @@
 #!/bin/bash
 
 exit1(){
+numbers="^[+-]?[0-9]+$"
+
+if ! [[ $1 =~ $numbers ]] 
+then
+	
+	echo -e "\e[1;31mВведите число\e[0m" >&2
+	exit -2
+fi
+
 if [[ $# -gt 1 ]]
 then 
 	echo -e "\e[1;31mВведите код возврата(1 или 0 цифр)\e[0m ">&2
@@ -20,7 +29,8 @@ then
 	echo "Done $1"
 	exit "$1"
 else 	
-	echo "Диапазон от 0 до 255"
+	echo -e "\e[1;31mДипазон от 0 до 255\e[0m ">&2
+	exit -1
 
 fi
 }

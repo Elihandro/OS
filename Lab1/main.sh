@@ -17,7 +17,7 @@ case $1 in
 		exit -4	
 	fi
 	source ./search.sh
-	search1 $2 $3 $4;;
+	search1 $2 $3;;
  reverse)
 	if ! [ -f "reverse.sh" ]
 	then	
@@ -63,6 +63,13 @@ case $1 in
 	source ./exit.sh
 	exit1 $2 $3 $4;;
 
+
+interactive)
+	if ! [ -f "interactive.sh" ]
+	then
+		echo -e "\e[1;31mИнтерактива нет\e[0m" >&2
+	fi
+	source ./interactive.sh;;
       *)
 		echo "\e[1;31mВведите одну из этих комманд\e[0m" >&2
 		exit -5
