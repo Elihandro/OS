@@ -25,8 +25,8 @@ read option
 if [[ $option -gt 7 ]]
 then 	
 	
-	echo -e "\e[1;31mВведите число от 1 до 7\e[0m ">&2
-	exit -2
+	echo -e "\e[1;31mВведите число от 1 до 7\e[0m ">&2	
+	source ./interactive.sh 		
 
 fi
 
@@ -36,6 +36,7 @@ case $option in
  	if ! [ -f "calc.sh" ]
 	then
 		 echo -e "\e[1;31mКалькулятора нет\e[0m" >&2
+		 source ./interactive.sh		
 	fi
 
 	source ./calc.sh
@@ -54,6 +55,7 @@ case $option in
 	if ! [ -f "search.sh" ] 
 	then
 		 echo -e "\e[1;31mСерча нет\e[0m" >&2
+		 source ./interactive.sh 		
 	fi
 	source ./search.sh
 	echo -e "\e[1;31mВведите директорию\e[0m"
@@ -68,6 +70,7 @@ case $option in
 	if ! [ -f "reverse.sh" ]
 	then
 		 echo -e "\e[1;31mРеверса нет\e[0m" >&2
+	 	 source ./interactive.sh 		
 	fi
 	
 	source ./reverse.sh	
@@ -83,6 +86,7 @@ case $option in
 	if ! [ -f "strlen.sh" ]
 	then 	
 		 echo -e "\e[1;31mСтрлена нет\e[0m" >&2
+		 source ./interactive.sh 		
 	fi
 	
 	source ./strlen.sh
@@ -94,7 +98,8 @@ case $option in
 5) 
 	if ! [ -f "log.sh" ]
 	then	
-		 echo -e "\e[1;31mКалькулятора нет\e[0m" >&2
+		 echo -e "\e[1;31mЛога нет\e[0m" >&2
+		 source ./interactive.sh 		
 	fi
 	
 	source ./log.sh
@@ -105,17 +110,44 @@ case $option in
 	if ! [ -f "exit.sh" ]
 	then
 		 echo -e "\e[1;31mВыхода нет\e[0m" >&2
+		 source ./interactive.sh 		
 	fi
 	
-	source ./exit.sh
+	numbers='^[+-]?[0-9]+$'
+
+	
 	echo -e "\e[1;31mВведите код ошибки\e[0m"
 	read code
-	exit $code;;
+
+	if ! [[ $code =~ $numbers ]]
+	then 
+		echo -e "\e[1;31mВведите одно число\e[0m" >&2
+		source ./interactive.sh 		
+	fi 
+
+	
+	if ! [[ "$code" -ge 0 && "$code" -le 255 ]]
+	then
+		
+		echo -e "\e[1;31mВведите число от 0 до 255\e[0m" >&2
+		source ./interactive.sh
+	fi
+
+	if [ -z $code ] 
+	then 
+		echo "Done 0"
+		exit 0
+
+	fi
+
+	source ./exit.sh
+	exit1 $code;;
 	
 7)
 	if ! [ -f "help.sh" ] 
 	then	
 		 echo -e "\e[1;31mПомощи нет\e[0m" >&2
+	         source ./interactive.sh 		
 	fi
 	
 	source ./help.sh

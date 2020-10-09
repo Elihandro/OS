@@ -13,14 +13,19 @@ fi
 
 
 
-echo1="$(sed -n 's/WW/Warning/p' /var/log/anaconda/X.log)"
-echo2="$(sed -n 's/II/Information/p' /var/log/anaconda/X.log)"
+if ! [ -e "/var/log/anaconda/X.log" ]
+then
+	 
+	echo -e "\e[1;31mЛога не существует\e[0m" >&2 
+	exit -4
 
+fi
 
+echo1=$(cat /var/log/anaconda/X.log | awk '{if ($3 == "(WW)" && ($1 == "[")) print $0}')
 
+echo2=$(cat /var/log/anaconda/X.log | awk '{if ($3 == "(II)" && ($1 == "[")) print $0}')
 
-echo -e "\e[1;33m$echo1\e[0m"
-echo -e "\e[1;36m$echo2\e[0m"
-
+echo -e "${echo1//("WW")/"  \e[1;33mWarning  \e[0m"}"
+echo -e "${echo2//("II")/"  \e[1;36mInformation  \e[0m"}"
 
 }

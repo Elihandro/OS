@@ -60,6 +60,20 @@ case $1 in
 		echo -e "\e[1;31mВыхода нет, смерись\e[0m" >&2
 		exit -4
 	fi
+
+
+	if [ -z $2 ] 
+	then
+		echo "Done 0"
+		exit 0
+	fi	
+	
+	numbers='^[+-]?[0-9]+$'
+	if ! [[ $2 =~ $numbers ]]
+	then	
+		echo -e "\e[1;31mВведите одно число\e[0m" >&2
+		exit -2
+	fi
 	source ./exit.sh
 	exit1 $2 $3 $4;;
 
@@ -71,8 +85,8 @@ interactive)
 	fi
 	source ./interactive.sh;;
       *)
-		echo "\e[1;31mВведите одну из этих комманд\e[0m" >&2
+		echo -e "\e[1;31mВведите одну из этих комманд\e[0m" >&2	
+		source ./help.sh	
 		exit -5
-	source ./help.sh	
 esac
 
