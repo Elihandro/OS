@@ -57,11 +57,29 @@ case $option in
 		 echo -e "\e[1;31mСерча нет\e[0m" >&2
 		 source ./interactive.sh 		
 	fi
+
+
 	source ./search.sh
 	echo -e "\e[1;31mВведите директорию\e[0m"
 	read direct
 	echo -e "\e[1;31mВведите текст\e[0m" 
 	read text2
+	
+	if ! [ -d $direct ]
+	then 
+		
+		echo -e "\e[1;31mДиректории не существует\e[0m ">&2
+		source ./interactive.sh
+	fi
+
+
+	if ! [ -r $direct ]
+	then  
+		echo -e "\e[1;31m Нет доступа \e[0m"
+		source ./iteractive.sh
+
+	fi
+
 	search1 $direct $text2	
 	source ./interactive.sh;; 		
 

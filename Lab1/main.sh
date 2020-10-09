@@ -11,6 +11,24 @@ case $1 in
 	source ./calc.sh
 	calc1 $2 $3 $4 $5 $6;;
  search)
+	
+	if ! [ -d $2 ]
+	then 
+		echo -e "\e[1;31mДиректории не существует\e[0m ">&2
+		exit -4
+	fi
+
+
+	if ! [ -r "$2" ] 
+	then 
+		
+		echo -e "\e[1;31mНет доступа на чтение\e[0m ">&2
+		exit -6
+
+	fi
+
+
+
 	if ! [ -f "search.sh" ]
 	then	
 		echo -e "\e[1;31mСерча нет\e[0m" >&2
