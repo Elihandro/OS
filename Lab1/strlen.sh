@@ -2,25 +2,34 @@
 
 
 strlen1(){
-if [ -z $1 ] 
-then
+
+	if [[ $# -gt 2 ]]
+	then
+		echo -e "\e[1;31mВведите ОДНУ строку\e[0m" >&2
+		exit -3
+	fi
 	
-	echo -e "\e[1;31mВведите строку\e[0m ">&2
-	exit -2
-fi
-	
+
+	if [[ ${#2} -eq 0 ]]
+	then 
+		echo -e "\e[1;31mВведите строку\e[0m" >&2
+		exit -2
+	else	
+		echo -e "\e[1;31mОтвет равен\e[0m"
+		echo "${#2}"
+	fi
+}
+
+strlen2(){
 
 
-echo -e "\e[1;31mОтвет равен\e[0m"
 
-if [[ $# -eq 1 ]]
-then
-	echo ${#1}
-else
-	
-	echo -e "\e[1;31mВведите одно слово\e[0m ">&2
-	exit -2
+	if [ ${#1} -eq 0 ]
+	then 
+		echo -e "\e[1;31mВведите строку\e[0m" >&2
+	else
+		echo -e "\e[1;31mОтвет равен\e[0m"
+		echo "${#1}"	
+	fi
 
-
-fi
 }

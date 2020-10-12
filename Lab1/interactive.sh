@@ -110,8 +110,9 @@ case $option in
 	source ./strlen.sh
 	echo -e "\e[1;31mВведите текст\e[0m"
 	read Text
-	strlen1 $Text
-	source ./interactive.sh;; 	
+	strlen2 "$Text"
+	source ./interactive.sh;;
+	 	
 	
 5) 
 	if ! [ -f "log.sh" ]

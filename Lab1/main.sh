@@ -52,7 +52,7 @@ case $1 in
 		exit -4
 	fi
 	source ./strlen.sh
-	strlen1 $2 $3 $4;;
+	strlen1 "$@";;
 
     log)
 	if ! [ -f "log.sh" ] 
