@@ -10,8 +10,23 @@ case $1 in
 
 	source ./calc.sh
 	calc1 $2 $3 $4 $5 $6;;
+
  search)
+	if ! [ -f "search.sh" ]
+	then	
+		echo -e "\e[1;31mСерча нет\e[0m" >&2
+		exit -4	
+	fi
+
 	
+	if ! [[ $# -eq 3 ]]
+	then 
+		echo -e "\e[1;31mВведите 2 аргумета: директорию и строку\e[0m" >&2
+		exit -3
+	fi
+	
+	
+
 	if ! [ -d $2 ]
 	then 
 		echo -e "\e[1;31mДиректории не существует\e[0m ">&2
@@ -19,7 +34,8 @@ case $1 in
 	fi
 
 
-	if ! [ -r "$2" ] 
+	
+	if ! [ -r $2 ] 
 	then 
 		
 		echo -e "\e[1;31mНет доступа на чтение\e[0m ">&2
@@ -27,15 +43,8 @@ case $1 in
 
 	fi
 
-
-
-	if ! [ -f "search.sh" ]
-	then	
-		echo -e "\e[1;31mСерча нет\e[0m" >&2
-		exit -4	
-	fi
 	source ./search.sh
-	search1 $2 $3;;
+	search1 $1 $2 $3;;
  reverse)
 	if ! [ -f "reverse.sh" ]
 	then	

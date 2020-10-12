@@ -30,6 +30,17 @@ then
 
 fi
 
+
+numbers='^[+-]?[0-9]+$'
+
+if ! [[ $option =~ $numbers ]]
+then 
+	echo -e "\e[1;31mВведите число\e[0m" >&2
+	source ./interactive.sh 		
+fi 
+
+
+
 case $option in 
 
 1)
@@ -42,10 +53,44 @@ case $option in
 	source ./calc.sh
 	echo -e "\e[1;31mВведите команду\e[0m"
 	read commanda
+
+ 	if  [[ $commanda != sum && $commanda != mul && $commanda != div && $commanda != sub ]]
+	then	  
+		echo -e "\e[1;31mCommand not found, please add command\e[0m" >&2
+		source ./interactive.sh
+	fi
+
+
+
 	echo -e "\e[1;31mВведите первое число\e[0m"
 	read number1
 	echo -e "\e[1;31mВведите второе число\e[0m"
 	read number2
+
+	
+	numbers='^[+-]?[0-9]+$'
+	if  ! [[ $number1 =~ $numbers && $number2 =~ $numbers ]] 
+	then
+		echo -e "\e[1;31mВведите числа\e[0m" >&2
+		source ./interactive.sh
+	fi
+
+
+	if  [[ $# -gt 3 ]]
+	then
+		echo -e "\e[1;31mВведитите дествие и два числа\e[0m" >&2
+		source ./interactive.sh
+	fi
+
+
+	if [[ $3 -eq 0 || $3 -eq -0 || $3 -eq +0 ]]
+	then 
+		echo -e "\e[1;31mДелить на ноль нельзя\e[0m" >&2
+		source ./interactive.sh	
+	fi
+		
+
+
 	echo -e "\e[1;31mОтвет равен\e[0m"
 	calc1 $commanda $number1 $number2
 	source ./interactive.sh;; 		
@@ -90,14 +135,64 @@ case $option in
 		 echo -e "\e[1;31mРеверса нет\e[0m" >&2
 	 	 source ./interactive.sh 		
 	fi
-	
+		
 	source ./reverse.sh	
+
 	echo -e "\e[1;31mВведите первый файл\e[0m"
 	read file1
 	echo -e "\e[1;31mВведите второй файл\e[0m"
 	read file2
-	reverse1 $file1 $file2
-	source ./interactive.sh;;		
+
+	
+	
+	if [[ -d $file1 ]] 
+	then
+		echo -e "\e[1;31m1 это директория\e[0m ">&2
+	 	source ./interactive.sh 		
+	fi
+
+
+
+	if [[ -d $file2 ]] 
+	then
+		echo -e "\e[1;31m2 это директория\e[0m ">&2
+	 	source ./interactive.sh 		
+	fi
+
+
+	if ! [[ -f $file1 ]]
+	then
+		echo -e "\e[1;31m Первый файл не существует\e[0m" >&2
+	 	source ./interactive.sh 		
+	fi
+
+
+	if ! [[ -f $file2 ]]
+	then
+		touch $file2
+	fi
+
+	if ! [[ -r $file1 ]]
+	then	
+		echo -e "\e[1;31m1 файл не достпен для чтения\e[0m ">&2
+	 	source ./interactive.sh 		
+	fi	
+
+	if ! [[ -r $file2 ]] 
+	then	
+		echo -e "\e[1;31m2 файл не достпен для чтения\e[0m ">&2	
+	 	source ./interactive.sh 		
+	fi
+
+
+	if ! [[ -w $file2 ]]
+	then 	
+		echo -e "\e[1;31m2 файл не доступен для записи\e[0m ">&2
+	 	source ./interactive.sh 		
+	fi
+
+
+	reverse1 $file1 $file2;;
 
 
 4) 
