@@ -166,7 +166,7 @@ case $option in
 	 	source ./interactive.sh 		
 	fi
 
-	if ! ( touch $2 ) 2>/dev/null
+	if ! ( touch $file2 ) 2>/dev/null
 	then 	
 		echo -e "\e[1;31m Здесь нельзя создать файл\e[0m" >&2
 		source ./interactive.sh
