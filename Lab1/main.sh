@@ -24,27 +24,9 @@ case $1 in
 		echo -e "\e[1;31mВведите 2 аргумета: директорию и строку\e[0m" >&2
 		exit -3
 	fi
-	
-	
-
-	if ! [ -d $2 ]
-	then 
-		echo -e "\e[1;31mДиректории не существует\e[0m ">&2
-		exit -4
-	fi
-
-
-	
-	if ! [ -r $2 ] 
-	then 
-		
-		echo -e "\e[1;31mНет доступа на чтение\e[0m ">&2
-		exit -6
-
-	fi
 
 	source ./search.sh
-	search1 $1 $2 $3;;
+	search1 "$2" "$3";;
  reverse)
 	if ! [ -f "reverse.sh" ]
 	then	
@@ -86,21 +68,8 @@ case $1 in
 	then	
 		echo -e "\e[1;31mВыхода нет, смерись\e[0m" >&2
 		exit -4
-	fi
-
-
-	if [ -z $2 ] 
-	then
-		echo "Done 0"
-		exit 0
 	fi	
 	
-	numbers='^[+-]?[0-9]+$'
-	if ! [[ $2 =~ $numbers ]]
-	then	
-		echo -e "\e[1;31mВведите одно число\e[0m" >&2
-		exit -2
-	fi
 	source ./exit.sh
 	exit1 $2 $3 $4;;
 

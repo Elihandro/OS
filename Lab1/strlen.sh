@@ -10,7 +10,14 @@ strlen1(){
 	fi
 	
 
-	if [[ ${#2} -eq 0 ]]
+
+
+
+	if [[ $# -gt 1 ]]
+	then
+		echo -e "\e[1;31mСтрока длины 0\e[0m" >&2
+		exit -2
+	elif [ ${#2} -eq 0 ]
 	then 
 		echo -e "\e[1;31mВведите строку\e[0m" >&2
 		exit -2
@@ -22,9 +29,7 @@ strlen1(){
 
 strlen2(){
 
-
-
-	if [ ${#1} -eq 0 ]
+	if [[ ${#1} -eq 0 ]]
 	then 
 		echo -e "\e[1;31mВведите строку\e[0m" >&2
 	else

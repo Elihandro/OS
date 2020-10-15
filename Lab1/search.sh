@@ -2,22 +2,22 @@
 
 search1(){
 
-
-if ! [[ -d $2 ]]
+if ! [[ -d $1 ]] 
 then
 	
-	echo -e "\e[1;31mДиректории не существуетdfdf\e[0m ">&2
+	echo -e "\e[1;31mДиректории не существует\e[0m ">&2
 	exit -4
 fi
 
-if ! [[ -r $2 ]]
+if ! [[ -r $1 ]]
 then 
 	
 	echo -e "\e[1;31mНет доступа на чтение\e[0m ">&2
 	exit -4
 fi
 
-if  grep -r "$3" "$2"
+
+if  grep -r "$2" "$1" 2>/dev/null
 then 
 	echo -e "\e[1;31m^Найдено^\e[0m" 
 

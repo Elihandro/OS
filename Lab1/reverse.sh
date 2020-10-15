@@ -34,6 +34,13 @@ then
 	exit -2
 fi
 
+
+if ! ( touch $2 ) 2>/dev/null
+then 	
+	echo -e "\e[1;31m Здесь нельзя создать файл\e[0m" >&2
+	exit -6
+fi
+
 if ! [[ -f $2 ]]
 then
 	 touch $2

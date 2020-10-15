@@ -121,7 +121,7 @@ case $option in
 	if ! [ -r $direct ]
 	then  
 		echo -e "\e[1;31m Нет доступа \e[0m"
-		source ./iteractive.sh
+		source ./interactive.sh
 
 	fi
 
@@ -165,6 +165,13 @@ case $option in
 		echo -e "\e[1;31m Первый файл не существует\e[0m" >&2
 	 	source ./interactive.sh 		
 	fi
+
+	if ! ( touch $2 ) 2>/dev/null
+	then 	
+		echo -e "\e[1;31m Здесь нельзя создать файл\e[0m" >&2
+		source ./interactive.sh
+	fi
+
 
 
 	if ! [[ -f $file2 ]]
