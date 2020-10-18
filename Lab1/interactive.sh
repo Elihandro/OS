@@ -64,32 +64,32 @@ case $option in
 
 	echo -e "\e[1;31mВведите первое число\e[0m"
 	read number1
+	
+	
+	if  ! [[ $number1 =~ $numbers ]] 
+	then
+		echo -e "\e[1;31mВведите числo!!!\e[0m" >&2
+		source ./interactive.sh
+	fi
+
+
 	echo -e "\e[1;31mВведите второе число\e[0m"
 	read number2
 
-	
-	numbers='^[+-]?[0-9]+$'
-	if  ! [[ $number1 =~ $numbers && $number2 =~ $numbers ]] 
+
+	if  ! [[ $number2 =~ $numbers ]] 
 	then
-		echo -e "\e[1;31mВведите числа\e[0m" >&2
+		echo -e "\e[1;31mВведите числo!!!\e[0m" >&2
 		source ./interactive.sh
 	fi
 
 
-	if  [[ $# -gt 3 ]]
-	then
-		echo -e "\e[1;31mВведитите дествие и два числа\e[0m" >&2
-		source ./interactive.sh
-	fi
-
-
-	if [[ $3 -eq 0 || $3 -eq -0 || $3 -eq +0 ]]
+	if [[ $number2 -eq 0 || $number2 -eq -0 || $number2 -eq +0 ]]
 	then 
-		echo -e "\e[1;31mДелить на ноль нельзя\e[0m" >&2
+		echo -e "\e[1;31mДелить на ноль нельзя!!!\e[0m" >&2
 		source ./interactive.sh	
 	fi
 		
-
 
 	echo -e "\e[1;31mОтвет равен\e[0m"
 	calc1 $commanda $number1 $number2
@@ -110,7 +110,7 @@ case $option in
 	echo -e "\e[1;31mВведите текст\e[0m" 
 	read text2
 	
-	if ! [ -d $direct ]
+	if ! [[ -d $direct ]]
 	then 
 		
 		echo -e "\e[1;31mДиректории не существует\e[0m ">&2
@@ -199,7 +199,8 @@ case $option in
 	fi
 
 
-	reverse1 $file1 $file2;;
+	reverse1 $file1 $file2
+	source ./interactive.sh;;
 
 
 4) 
@@ -223,6 +224,13 @@ case $option in
 		 source ./interactive.sh 		
 	fi
 	
+	if ! [ -e "/var/log/anaconda/X.log" ]
+	then 
+		echo -e "\e[1;31mЛога не существует\e[0m" >&2 
+		source ./interactive.sh 		
+	fi
+
+
 	source ./log.sh
 	log1 $1 $2	
 	source ./interactive.sh;; 		
@@ -234,15 +242,13 @@ case $option in
 		 source ./interactive.sh 		
 	fi
 	
-	numbers='^[+-]?[0-9]+$'
-
 	
 	echo -e "\e[1;31mВведите код ошибки\e[0m"
 	read code
 
 	if ! [[ $code =~ $numbers ]]
 	then 
-		echo -e "\e[1;31mВведите одно число\e[0m" >&2
+		echo -e "\e[1;31mВведите число!!!\e[0m" >&2
 		source ./interactive.sh 		
 	fi 
 

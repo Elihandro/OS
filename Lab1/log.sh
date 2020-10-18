@@ -4,7 +4,7 @@
 log1(){
 
 
-if [[ $# -gt 0 ]]
+if [[ $# -gt 0 ]] && ! [[ "$1" = "interactive" ]]
 then
 	echo -e "\e[1;31mЗдесь аргументы не нужны\e[0m" >&2 
 	exit -3
