@@ -17,7 +17,7 @@ then
 fi
 
 
-if  grep -r "$2" "$1" 2>/dev/nulli
+if  grep -r "$2" "$1" 2>/dev/null
 then 
 	echo -e "\e[1;31m^Найдено^\e[0m" 
 
